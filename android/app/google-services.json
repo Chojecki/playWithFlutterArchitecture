@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "395844029460",
+    "firebase_url": "https://remote-flutter-test.firebaseio.com",
+    "project_id": "remote-flutter-test",
+    "storage_bucket": "remote-flutter-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:395844029460:android:cb97b7a468557d3f0f2b01",
+        "android_client_info": {
+          "package_name": "com.example.my_horses"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "395844029460-h36viepbaui72u8vvpgn98v0sjli4lh6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBerLq6inkTOCifURT67NpzWPbJ-IXNnr4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "395844029460-h36viepbaui72u8vvpgn98v0sjli4lh6.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "395844029460-654mkssauf9bpma6ch3155phmpojdk0v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.myHorses"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
