@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:my_horses/screens/add_horse_screen.dart';
 import 'package:my_horses/screens/home_screen.dart';
 import 'package:my_horses/screens/horse_detail_screen.dart';
+import 'package:my_horses/screens/login_screen.dart';
+import 'package:my_horses/screens/splash_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -13,9 +15,15 @@ class RouteGenerator {
       case '/':
         return MaterialPageRoute(
             builder: (_) => HomeScreen(), settings: settings);
+      case '/splash':
+        return MaterialPageRoute(
+            builder: (_) => SplashScreen(), settings: settings);
       case '/addHorse':
         return MaterialPageRoute(
             builder: (_) => AddHorseScreen(), settings: settings);
+      case '/login':
+        return MaterialPageRoute(
+            builder: (_) => LoginScreen(), settings: settings);
       case '/horseDetail':
         return MaterialPageRoute(
             builder: (_) => HorseDetailScreen(

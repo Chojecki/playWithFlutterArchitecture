@@ -17,6 +17,10 @@ environment:
   sdk: ">=2.6.0 <3.0.0"
 
 dependencies:
+  firebase_auth: ^0.15.3
+  flutter_state_notifier:
+  state_notifier: ^0.4.0
+  freezed_annotation:
   injectable: ^0.3.0
   get_it: ^4.0.1
   path_provider: ^1.6.5
@@ -39,6 +43,7 @@ dependencies:
   cupertino_icons: ^0.1.2
 
 dev_dependencies:
+  freezed:
   test:
   flutter_test:
     sdk: flutter
@@ -60,6 +65,7 @@ flutter:
   assets:
     - assets/animations/aaa.flr
     - assets/animations/t.flr
+    - assets/animations/bbb.flr
   #  - images/a_dot_ham.jpeg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

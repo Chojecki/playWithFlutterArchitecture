@@ -18,6 +18,7 @@ class LoadedModel extends ChangeNotifier {
   }
 }
 
+//This is only for [RemoteConfig] from firebase
 class RemoteConfigService {
   final RemoteConfig _remoteConfig;
 

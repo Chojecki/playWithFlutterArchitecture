@@ -1,29 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:flare_flutter/flare_actor.dart';
-import 'package:my_horses/state_models/loaded_model.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
+import 'package:my_horses/injectable.dart';
+import 'package:my_horses/models/userState_model.dart';
+import 'package:my_horses/routes_generator.dart';
+import 'package:my_horses/screens/login_screen.dart';
+import 'package:my_horses/state_models/auth_state_model.dart';
+import 'package:my_horses/state_models/horse_list_model.dart';
+import 'package:my_horses/theme/theme.dart';
 import 'package:provider/provider.dart';
 
 class SplashScreen extends StatelessWidget {
-  final bool color;
-  const SplashScreen({Key key, this.color}) : super(key: key);
-
-  Color get c => color ? Colors.black : Color.fromRGBO(230, 39, 134, 1);
+  const SplashScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Center(
-        child: Container(
-          color: Colors.white,
-          height: 400,
-          width: 400,
-          child: FlareActor("assets/animations/aaa.flr", animation: "Untitled",
-              callback: (_) {
-            Provider.of<LoadedModel>(context, listen: false).finishLoading();
-          }, color: c),
-        ),
-      ),
+    var authState = Provider.of<AuthStateModel>(context);
+    return StateNotifierBuilder(
+        stateNotifier: authState,
+        builder: (context, UserState state, _) => state.map(
+            initial: (_) => Initial(),
+            authenticated: (_) => ChangeNotifierProvider(
+                  create: (_) => getIt<HorseListModel>()..loadHorses(),
+                  child: MaterialApp(
+                    theme: AppTheme.theme,
+                    initialRoute: '/',
+                    onGenerateRoute: RouteGenerator.generateRoute,
+                  ),
+                ),
+            unauthenticated: (_) => LoginScreen()));
+  }
+}
+
+class Initial extends StatelessWidget {
+  const Initial({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: CircularProgressIndicator(),
     );
   }
 }
