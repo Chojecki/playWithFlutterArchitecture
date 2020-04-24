@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:my_horses/models/signinState_model.dart';
 import 'package:my_horses/state_models/auth_state_model.dart';
@@ -52,16 +53,26 @@ class _LoginScreenState extends State<LoginFrom> {
     final textTheme = Theme.of(context).textTheme;
     return MaterialApp(
       theme: AppTheme.theme,
-      home: StateNotifierBuilder(
-        stateNotifier: singinFormState,
-        builder: (context, SignInFormState state, _) {
-          if (state.isSuccess) {
-            Provider.of<AuthStateModel>(context, listen: false)
-                .getSignedInUser();
-          }
-          return Scaffold(
-            resizeToAvoidBottomPadding: false,
-            body: Container(
+      home: Scaffold(
+        resizeToAvoidBottomPadding: false,
+        body: StateNotifierBuilder(
+          stateNotifier: singinFormState,
+          builder: (context, SignInFormState state, _) {
+            if (state.isSuccess) {
+              Provider.of<AuthStateModel>(context, listen: false)
+                  .getSignedInUser();
+            }
+            if (state.showErrorMessages) {
+              SchedulerBinding.instance.addPostFrameCallback((_) {
+                Scaffold.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Łooo panie'),
+                    backgroundColor: Colors.red,
+                  ),
+                );
+              });
+            }
+            return Container(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [Colors.pinkAccent, Colors.white],
@@ -203,9 +214,9 @@ class _LoginScreenState extends State<LoginFrom> {
                   ),
                 ],
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
