@@ -39,9 +39,14 @@ class FirebaseUserRepository implements UserRepository {
   @override
   Future<UserEntity> signInWithEmailAndPassword(
       {String emailAddress, String password}) async {
-    final user = await _auth.signInWithEmailAndPassword(
-        email: emailAddress, password: password);
-    return _userMapper.toDomain(user.user);
+    try {
+      final user = await _auth.signInWithEmailAndPassword(
+          email: emailAddress, password: password);
+      return _userMapper.toDomain(user.user);
+    } catch (e) {
+      print(e);
+      return null;
+    }
   }
 
   @override

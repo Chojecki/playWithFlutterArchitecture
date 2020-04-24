@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'dart:core';
 
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 import 'package:my_horses/domain/horse_entity.dart';
 import 'package:my_horses/domain/horses_repository.dart';
 import 'package:shared_preferences/shared_preferences.dart';

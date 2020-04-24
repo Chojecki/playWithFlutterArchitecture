@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_horses/models/horse_model.dart';
 import 'package:my_horses/state_models/auth_state_model.dart';
 import 'package:my_horses/state_models/horse_list_model.dart';
-import 'package:my_horses/state_models/signin_state_model.dart';
 import 'package:my_horses/widgets/horsesListView.dart';
 import 'package:provider/provider.dart';
 
@@ -16,7 +14,7 @@ class HomeScreen extends StatelessWidget {
           title: Text("My Horses"),
           actions: <Widget>[
             FlatButton(
-                child: Icon(Icons.movie),
+                child: Text('Logout', style: TextStyle(color: Colors.white)),
                 onPressed: () =>
                     Provider.of<AuthStateModel>(context, listen: false)
                         .signOut())

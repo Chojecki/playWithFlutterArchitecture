@@ -59,10 +59,6 @@ class _LoginScreenState extends State<LoginFrom> {
             Provider.of<AuthStateModel>(context, listen: false)
                 .getSignedInUser();
           }
-
-          // if (state.showErrorMessages) {
-          //   _flareControl.play("fail");
-          // }
           return Scaffold(
             resizeToAvoidBottomPadding: false,
             body: Container(

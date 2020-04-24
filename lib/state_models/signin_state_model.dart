@@ -25,19 +25,18 @@ class SignInStateModel extends StateNotifier<SignInFormState> {
     if (user != null) {
       state = this.state.copyWith(isSubmitting: false, isSuccess: true);
     } else {
-      print('eeee');
       state = this.state.copyWith(isSubmitting: false, showErrorMessages: true);
     }
   }
 
-  void signInWithEmailAndPasswordPressed() {
+  void signInWithEmailAndPasswordPressed() async {
     state = this.state.copyWith(isSubmitting: true);
-    final user = userRepo.signInWithEmailAndPassword(
+    final user = await userRepo.signInWithEmailAndPassword(
         emailAddress: state.emailAddress, password: state.password);
     if (user != null) {
       state = this.state.copyWith(isSubmitting: false, isSuccess: true);
     } else {
-      state = this.state.copyWith(isSubmitting: true, showErrorMessages: true);
+      state = this.state.copyWith(isSubmitting: false, showErrorMessages: true);
     }
   }
 }
